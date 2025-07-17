@@ -1,11 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
+import { User, UUID } from '../core/models';
 
-/**
- * Добавить модели когда будут готовы
- */
-export const MOCK_USERS: any[] = [
+
+export const MOCK_USERS: User[] = [
   {
-    id: uuidv4(),
+    id: uuidv4() as UUID,
     name: 'Иван Петров',
     avatar: '/assets/avatars/avtr-1.jpg',
     followers: [], // Заполнится ниже
@@ -13,7 +12,7 @@ export const MOCK_USERS: any[] = [
     createdAt: new Date(2025, 6, 1, 10, 0, 0),
   },
   {
-    id: uuidv4(),
+    id: uuidv4() as UUID,
     name: 'Мария Иванова',
     avatar: '/assets/avatars/avtr-2.jpg',
     followers: [],
@@ -21,7 +20,7 @@ export const MOCK_USERS: any[] = [
     createdAt: new Date(2025, 6, 2, 12, 30, 0),
   },
   {
-    id: uuidv4(),
+    id: uuidv4() as UUID,
     name: 'Алексей Смирнов',
     avatar: null,
     followers: [],
