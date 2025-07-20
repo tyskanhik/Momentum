@@ -1,16 +1,22 @@
 from typing import List, Optional
-from pydantic import BaseModel, Field
-from uuid import UUID, uuid4
+from pydantic import BaseModel, Field, validator
+from uuid import UUID, uuid4, uuid5, NAMESPACE_OID
 from datetime import datetime
 
 class User(BaseModel):
     id: UUID = Field(default_factory=uuid4)
     name: str
-    nickname: str 
+    nickname: str
     avatar: Optional[str] = None
-    following: List[UUID] = []  
-    followers: List[UUID] = []  
+    following: List[UUID] = Field(default_factory=list)
+    followers: List[UUID] = Field(default_factory=list)
     createdAt: datetime
+
+    @validator("id", "followers", "following", pre=True, each_item=True)
+    def convert_str_to_uuid(cls, v):
+        if isinstance(v, str) and v.isdigit():
+            return uuid5(NAMESPACE_OID, f"mock-user-{v}")
+        return v
 
 class CardUser(BaseModel):
     id: UUID
