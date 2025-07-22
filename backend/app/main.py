@@ -1,13 +1,15 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from .mock_cards import mock_cards, Card
+from app.mock.card_mock import mock_cards, Card
 from uuid import UUID
 
 load_dotenv()  # Загружаем .env
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
