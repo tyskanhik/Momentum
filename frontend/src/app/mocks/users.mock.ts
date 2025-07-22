@@ -6,6 +6,7 @@ export const MOCK_USERS: User[] = [
   {
     id: uuidv4() as UUID,
     name: 'Иван Петров',
+    nickname: "ivanpetrov",
     avatar: '/assets/avatars/avtr-1.jpg',
     followers: [], // Заполнится ниже
     following: [], // Заполнится ниже
@@ -14,6 +15,7 @@ export const MOCK_USERS: User[] = [
   {
     id: uuidv4() as UUID,
     name: 'Мария Иванова',
+    nickname: "mariaivanova",
     avatar: '/assets/avatars/avtr-2.jpg',
     followers: [],
     following: [],
@@ -22,6 +24,7 @@ export const MOCK_USERS: User[] = [
   {
     id: uuidv4() as UUID,
     name: 'Алексей Смирнов',
+    nickname: "alexsmirnov",
     avatar: null,
     followers: [],
     following: [],
