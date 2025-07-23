@@ -1,5 +1,5 @@
 from typing import List, Optional
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from uuid import UUID, uuid4, uuid5, NAMESPACE_OID
 from datetime import datetime
 
@@ -12,13 +12,15 @@ class User(BaseModel):
     followers: List[UUID] = Field(default_factory=list)
     createdAt: datetime
 
-    @validator("id", pre=True)
+    @field_validator("id", mode="before")
+    @classmethod
     def convert_str_to_uuid(cls, v):
         if isinstance(v, str) and v.isdigit():
             return uuid5(NAMESPACE_OID, f"mock-user-{v}")
         return v
 
-    @validator("following", "followers", pre=True)
+    @field_validator("following", "followers", mode="before")
+    @classmethod
     def convert_list_str_to_uuid(cls, v):
         if isinstance(v, list):
             return [
