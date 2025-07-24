@@ -1,6 +1,6 @@
 from datetime import datetime
 from uuid import uuid4
-from app.mock.user_mock import mock_users
+from app.mocks.user_mock import mock_users
 from app.models.models import Card, CardUser
 
 mock_card_users = [
@@ -23,7 +23,7 @@ mock_cards = [
         description="Отдых на Бали",
         link="http://localhost:8000/static/media/2.jpg",
         owner=mock_card_users[1],
-        likes=[mock_card_users[0],mock_card_users[2]],
+        likes=[mock_card_users[0], mock_card_users[2]],
         createdAt=datetime(2025, 6, 6, 11, 20, 0)
     ),
     Card(
